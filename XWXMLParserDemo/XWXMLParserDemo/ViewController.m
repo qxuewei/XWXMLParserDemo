@@ -41,16 +41,6 @@
     [task resume];
 }
 
-//*利用 NSXMLParser 方式
--(void)XMLParserWithData:(NSData *)data{
-    //1.创建NSXMLParser
-    NSXMLParser *XMLParser = [[NSXMLParser alloc] initWithData:data];
-    //2.设置代理
-    [XMLParser setDelegate:self];
-    //3.开始解析
-    [XMLParser parse];
-}
-
 //*利用 GDataXMLNode 方式
 -(void)XMLGDataXMLNodeWithData:(NSData *)data{
     //1.加载XML数据
@@ -70,6 +60,17 @@
         [self.dataArrM addObject:model];
     }];
     NSLog(@"XML所有元素解析完毕:%@",self.dataArrM);
+}
+
+
+//*利用 NSXMLParser 方式
+-(void)XMLParserWithData:(NSData *)data{
+    //1.创建NSXMLParser
+    NSXMLParser *XMLParser = [[NSXMLParser alloc] initWithData:data];
+    //2.设置代理
+    [XMLParser setDelegate:self];
+    //3.开始解析
+    [XMLParser parse];
 }
 
 #pragma mark - NSXMLParserDelegate
